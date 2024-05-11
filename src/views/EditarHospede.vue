@@ -5,7 +5,7 @@
     <h1 class="titulo">EDITAR HOSPEDE</h1>
     <form class="containerForm" action="submit">
       <h2>DADOS PESSOAIS</h2>
-      <input class="inputText" type="text" placeholder="Nome" />
+      <input class="inputText" type="text" placeholder="hospede.nome" />
       <input class="inputText" type="text" placeholder="Data de Nascimento" />
       <input class="inputText" type="text" placeholder="CPF" />
       <input class="inputText" type="text" placeholder="Telefone" />

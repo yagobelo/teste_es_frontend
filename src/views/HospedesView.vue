@@ -7,7 +7,8 @@ import CardHospedes from "@/components/CardHospedes.vue";
     <RouterLink class="btnNovoCadastroHospede" to="/cadastro-hospede"
       >CADASTRAR HOSPEDE</RouterLink
     >
-    <div>
+    <div class="cards">
+      <CardHospedes />
       <CardHospedes />
       <CardHospedes />
     </div>
@@ -20,6 +21,14 @@ import CardHospedes from "@/components/CardHospedes.vue";
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  width: 100%;
+}
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 80%;
 }
 .btnNovoCadastroHospede {
   margin: 10px;
