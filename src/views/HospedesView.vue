@@ -1,5 +1,6 @@
 <script setup>
 import CardHospedes from "@/components/CardHospedes.vue";
+import { hospedes } from "@/data.js";
 </script>
 
 <template>
@@ -8,9 +9,11 @@ import CardHospedes from "@/components/CardHospedes.vue";
       >CADASTRAR HOSPEDE</RouterLink
     >
     <div class="cards">
-      <CardHospedes />
-      <CardHospedes />
-      <CardHospedes />
+      <CardHospedes
+        v-for="(item, index) in hospedes"
+        :key="index"
+        :hospede="item"
+      />
     </div>
   </div>
 </template>
@@ -25,10 +28,10 @@ import CardHospedes from "@/components/CardHospedes.vue";
 }
 .cards {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: wrap;
   align-items: center;
   justify-content: space-evenly;
-  width: 80%;
+  width: 90%;
 }
 .btnNovoCadastroHospede {
   margin: 10px;
