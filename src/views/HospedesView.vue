@@ -54,4 +54,10 @@ import { hospedes } from "@/data.js";
 .btnNovoCadastroHospede:active {
   background-color: aliceblue;
 }
+.editar {
+  position: absolute;
+  width: 50%;
+  top: 50px;
+  left: 0;
+}
 </style>

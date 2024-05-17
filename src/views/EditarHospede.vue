@@ -1,24 +1,51 @@
-<script setup></script>
+<script setup>
+// import { useCounterStore } from "@/stores/counter";
+// import { storeToRefs } from "pinia";
+
+// const store = useCounterStore();
+
+// const { editIdHospede } = storeToRefs(store);
+
+const data1 = {
+  id: "4",
+  nome: "Yago Belo",
+  dataNascimento: "15/02/2000",
+  telefone: "993115559",
+  email: "yago@email.com",
+  rg: "12345678989",
+  pais: "Brasil",
+  estado: "Alagoas",
+  cidade: "Maceio",
+  logradouro: "Rua Brasil Alagoas",
+  n: "10",
+  bairro: "Centro",
+  complemento: "",
+};
+</script>
 
 <template>
   <div class="bodyCadastrarHospede">
     <h1 class="titulo">EDITAR HOSPEDE</h1>
     <form class="containerForm" action="submit">
       <h2>DADOS PESSOAIS</h2>
-      <input class="inputText" type="text" placeholder="hospede.nome" />
-      <input class="inputText" type="text" placeholder="Data de Nascimento" />
-      <input class="inputText" type="text" placeholder="CPF" />
-      <input class="inputText" type="text" placeholder="Telefone" />
-      <input class="inputText" type="text" placeholder="E-mail" />
+      <input class="inputText" type="text" :placeholder="data1.nome" />
+      <input
+        class="inputText"
+        type="text"
+        :placeholder="data1.dataNascimento"
+      />
+      <input class="inputText" type="text" :placeholder="data1.telefone" />
+      <input class="inputText" type="text" :placeholder="data1.email" />
+      <input class="inputText" type="text" :placeholder="data1.rg" />
 
       <h2>ENDEREÇO</h2>
-      <input class="inputText" type="text" placeholder="País" />
-      <input class="inputText" type="text" placeholder="Estado" />
-      <input class="inputText" type="text" placeholder="Cidade" />
-      <input class="inputText" type="text" placeholder="Logradouro" />
-      <input class="inputText" type="text" placeholder="Número" />
-      <input class="inputText" type="text" placeholder="Bairro" />
-      <input class="inputText" type="text" placeholder="Complemento" />
+      <input class="inputText" type="text" :placeholder="data1.pais" />
+      <input class="inputText" type="text" :placeholder="data1.estado" />
+      <input class="inputText" type="text" :placeholder="data1.cidade" />
+      <input class="inputText" type="text" :placeholder="data1.logradouro" />
+      <input class="inputText" type="text" :placeholder="data1.n" />
+      <input class="inputText" type="text" :placeholder="data1.bairro" />
+      <input class="inputText" type="text" :placeholder="data1.complemento" />
 
       <button class="btnSubmit" type="submit">SALVAR</button>
     </form>

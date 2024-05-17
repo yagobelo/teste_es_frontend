@@ -1,17 +1,28 @@
 <script setup>
-const props = defineProps({ hospede: Object });
+import { useCounterStore } from "@/stores/counter";
+import { storeToRefs } from "pinia";
+
+const props = defineProps(["hospede"]);
+
+const store = useCounterStore();
+
+const { editIdHospede } = storeToRefs(store);
+
+const changeEditHospedeId = () => {
+  editIdHospede.value = props.hospede.id;
+};
 </script>
 
 <template>
   <RouterLink style="text-decoration: none" to="/editar-hospede">
-    <button class="container">
+    <button @click="changeEditHospedeId()" class="container">
       <div class="containerData">
         <p style="align-self: flex-end">ID: {{ hospede.id }}</p>
         <div class="containerP">
           <p>Nome: {{ hospede.nome }}</p>
           <p>Nascimento: {{ hospede.dataNascimento }}</p>
           <p>Telefone: {{ hospede.telefone }}</p>
-          <p>CPF: {{ hospede.cpf }}</p>
+          <p>RG: {{ hospede.rg }}</p>
         </div>
         <div class="containerP">
           <p>País: {{ hospede.pais }}</p>
@@ -70,8 +81,5 @@ button {
 }
 button:hover {
   background-color: #002f49c0;
-}
-button:active {
-  background-color: aliceblue;
 }
 </style>
