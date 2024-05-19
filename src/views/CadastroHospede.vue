@@ -1,26 +1,106 @@
-<script setup></script>
+<script setup>
+import { hospedesServices } from "@/services/hospedesServices";
+import { reactive, ref } from "vue";
+
+const display = ref("");
+
+const hospede = reactive({});
+
+const cadastrar = async () => {
+  try {
+    const resposta = await hospedesServices.cadastrarHospede(hospede);
+
+    alert(resposta.data.mensagem);
+  } catch (error) {
+    display.value = error.response.data.mensagem;
+    console.log(error.response.data.mensagem);
+  }
+};
+</script>
 
 <template>
   <div class="bodyCadastrarHospede">
     <h1 class="titulo">CADASTRAR HOSPEDE</h1>
-    <form class="containerForm" action="submit">
+    <h3 class="containerDisplay" v-if="display">{{ display }}</h3>
+    <form class="containerForm" @submit.prevent="cadastrar()">
       <h2>DADOS PESSOAIS</h2>
-      <input class="inputText" type="text" placeholder="Nome" />
-      <input class="inputText" type="text" placeholder="Data de Nascimento" />
-      <input class="inputText" type="text" placeholder="CPF" />
-      <input class="inputText" type="text" placeholder="Telefone" />
-      <input class="inputText" type="text" placeholder="E-mail" />
+      <input
+        class="inputText"
+        type="text"
+        placeholder="Nome"
+        v-model="hospede.nome"
+      />
+      <input
+        class="inputText"
+        type="text"
+        placeholder="Data de Nascimento"
+        v-model="hospede.data_nascimento"
+      />
+      <input
+        class="inputText"
+        type="text"
+        placeholder="RG"
+        v-model="hospede.rg"
+      />
+      <input
+        class="inputText"
+        type="text"
+        placeholder="Telefone"
+        v-model="hospede.telefone"
+      />
+      <input
+        class="inputText"
+        type="text"
+        placeholder="E-mail"
+        v-model="hospede.email"
+      />
 
       <h2>ENDEREÇO</h2>
-      <input class="inputText" type="text" placeholder="País" />
-      <input class="inputText" type="text" placeholder="Estado" />
-      <input class="inputText" type="text" placeholder="Cidade" />
-      <input class="inputText" type="text" placeholder="Logradouro" />
-      <input class="inputText" type="text" placeholder="Número" />
-      <input class="inputText" type="text" placeholder="Bairro" />
-      <input class="inputText" type="text" placeholder="Complemento" />
+      <input
+        class="inputText"
+        type="text"
+        placeholder="País"
+        v-model="hospede.pais"
+      />
+      <input
+        class="inputText"
+        type="text"
+        placeholder="Estado"
+        v-model="hospede.estado"
+      />
+      <input
+        class="inputText"
+        type="text"
+        placeholder="Cidade"
+        v-model="hospede.cidade"
+      />
+      <input
+        class="inputText"
+        type="text"
+        placeholder="Logradouro"
+        v-model="hospede.logradouro"
+      />
+      <input
+        class="inputText"
+        type="text"
+        placeholder="Número"
+        v-model="hospede.numero_endereco"
+      />
+      <input
+        class="inputText"
+        type="text"
+        placeholder="Bairro"
+        v-model="hospede.bairro"
+      />
+      <input
+        class="inputText"
+        type="text"
+        placeholder="Complemento"
+        v-model="hospede.complemento_endereco"
+        s
+      />
 
-      <button class="btnSubmit" type="submit">SALVAR</button>
+      <button class="btnSubmit">SALVAR</button>
     </form>
   </div>
 </template>
@@ -34,6 +114,14 @@
   font-family: Arial, Helvetica, sans-serif;
   align-self: center;
   margin-top: 20px;
+}
+.containerDisplay {
+  align-self: center;
+  margin: 0;
+  color: #e63946;
+  background: #003049;
+  padding: 5px 10px;
+  border-radius: 10px 10px 0 0;
 }
 .containerForm {
   display: flex;

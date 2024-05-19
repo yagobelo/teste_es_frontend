@@ -1,6 +1,21 @@
 <script setup>
 import CardHospedes from "@/components/CardHospedes.vue";
-import { hospedes } from "@/dataHospedes.js";
+import { ref } from "vue";
+
+import { hospedesServices } from "@/services/hospedesServices";
+import { onMounted } from "vue";
+
+const hospedes = ref([]);
+
+onMounted(async () => {
+  try {
+    const resposta = await hospedesServices.listarHospedes();
+
+    hospedes.value = resposta.data;
+  } catch (error) {
+    console.log(error.response.data.mensagem);
+  }
+});
 </script>
 
 <template>
