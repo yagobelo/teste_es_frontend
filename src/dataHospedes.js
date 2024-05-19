@@ -13,6 +13,7 @@ export const hospedes = [
     n: "10",
     bairro: "Centro",
     complemento: "",
+    create_at: "18/05/2024",
   },
   {
     id: "2",
@@ -28,6 +29,7 @@ export const hospedes = [
     n: "10",
     bairro: "Centro",
     complemento: "",
+    create_at: "18/05/2024",
   },
   {
     id: "3",
@@ -43,6 +45,7 @@ export const hospedes = [
     n: "10",
     bairro: "Centro",
     complemento: "",
+    create_at: "18/05/2024",
   },
   {
     id: "4",
@@ -58,5 +61,6 @@ export const hospedes = [
     n: "10",
     bairro: "Centro",
     complemento: "",
+    create_at: "18/05/2024",
   },
 ];

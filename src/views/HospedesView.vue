@@ -1,6 +1,6 @@
 <script setup>
 import CardHospedes from "@/components/CardHospedes.vue";
-import { hospedes } from "@/data.js";
+import { hospedes } from "@/dataHospedes.js";
 </script>
 
 <template>
@@ -53,11 +53,5 @@ import { hospedes } from "@/data.js";
 }
 .btnNovoCadastroHospede:active {
   background-color: aliceblue;
-}
-.editar {
-  position: absolute;
-  width: 50%;
-  top: 50px;
-  left: 0;
 }
 </style>

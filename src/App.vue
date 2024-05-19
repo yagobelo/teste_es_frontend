@@ -33,4 +33,7 @@ nav {
   font-weight: bold;
   margin: 10px;
 }
+.textHeader:hover {
+  color: white;
+}
 </style>

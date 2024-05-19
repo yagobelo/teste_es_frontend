@@ -4,5 +4,7 @@ import { defineStore } from "pinia";
 export const useCounterStore = defineStore("counter", () => {
   const editIdHospede = ref("");
 
-  return { editIdHospede };
+  const editIdReserva = ref("");
+
+  return { editIdHospede, editIdReserva };
 });

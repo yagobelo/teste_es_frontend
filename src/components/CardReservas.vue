@@ -2,37 +2,28 @@
 import { useCounterStore } from "@/stores/counter";
 import { storeToRefs } from "pinia";
 
-const props = defineProps(["hospede"]);
+const props = defineProps(["reserva"]);
 
 const store = useCounterStore();
 
-const { editIdHospede } = storeToRefs(store);
+const { editIdReserva } = storeToRefs(store);
 
-const changeEditHospedeId = () => {
-  editIdHospede.value = props.hospede.id;
+const changeEditReservaId = () => {
+  editIdReserva.value = props.reserva.id;
 };
 </script>
 
 <template>
-  <RouterLink style="text-decoration: none" to="/editar-hospede">
-    <button @click="changeEditHospedeId()" class="container">
+  <RouterLink style="text-decoration: none" to="/editar-reserva">
+    <button @click="changeEditReservaId()" class="container">
       <div class="containerData">
-        <p style="align-self: flex-end">ID: {{ hospede.id }}</p>
+        <p style="align-self: flex-end">ID: {{ reserva.id }}</p>
         <div class="containerP">
-          <p>Nome: {{ hospede.nome }}</p>
-          <p>Nascimento: {{ hospede.dataNascimento }}</p>
-          <p>Telefone: {{ hospede.telefone }}</p>
-          <p>RG: {{ hospede.rg }}</p>
-        </div>
-        <div class="containerP">
-          <p>País: {{ hospede.pais }}</p>
-          <p>Estado: {{ hospede.estado }}</p>
-          <p>Cidade: {{ hospede.cidade }}</p>
-          <p>Logradouro: {{ hospede.logradouro }}</p>
-          <p>Número: {{ hospede.n }}</p>
-          <p>Bairro: {{ hospede.bairro }}</p>
-          <p>Complemento: {{ hospede.complemento }}</p>
-          <p>Data do Cadastro: {{ hospede.create_at }}</p>
+          <p>RG: {{ reserva.rg_hospede }}</p>
+          <p>Checkin: {{ reserva.data_checkin }}</p>
+          <p>Checkout: {{ reserva.data_checkout }}</p>
+          <p>Status: {{ reserva.status_reserva }}</p>
+          <p>Data da Reserva: {{ reserva.create_at }}</p>
         </div>
       </div>
     </button>
@@ -47,7 +38,7 @@ const changeEditHospedeId = () => {
   display: flex;
   align-items: center;
   width: 300px;
-  height: 250px;
+  height: 150px;
   margin: 10px;
   padding: 0 10px;
 }

@@ -9,11 +9,6 @@ const router = createRouter({
       component: () => import("@/views/HospedesView.vue"),
     },
     {
-      path: "/reservas",
-      name: "/reservas",
-      component: () => import("@/views/ReservasView.vue"),
-    },
-    {
       path: "/cadastro-hospede",
       name: "/cadastro-hospede",
       component: () => import("@/views/CadastroHospede.vue"),
@@ -22,6 +17,21 @@ const router = createRouter({
       path: "/editar-hospede",
       name: "/editar-hospede",
       component: () => import("@/views/EditarHospede.vue"),
+    },
+    {
+      path: "/reservas",
+      name: "/reservas",
+      component: () => import("@/views/ReservasView.vue"),
+    },
+    {
+      path: "/cadastro-reserva",
+      name: "/cadastro-reserva",
+      component: () => import("@/views/CadastroReserva.vue"),
+    },
+    {
+      path: "/editar-reserva",
+      name: "/editar-reserva",
+      component: () => import("@/views/EditarReserva.vue"),
     },
   ],
 });
