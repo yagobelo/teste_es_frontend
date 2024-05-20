@@ -1,75 +1,101 @@
 <script setup>
-// import { useCounterStore } from "@/stores/counter";
-// import { storeToRefs } from "pinia";
+import { hospedesServices } from "@/services/hospedesServices";
+import { useCounterStore } from "@/stores/counter";
+import { storeToRefs } from "pinia";
+import { onMounted, reactive, ref } from "vue";
 
-// const store = useCounterStore();
+const store = useCounterStore();
 
-// const { editIdHospede } = storeToRefs(store);
+const { editIdHospede } = storeToRefs(store);
 
-const data1 = {
-  id: "4",
-  nome: "Yago Belo",
-  dataNascimento: "15/02/2000",
-  telefone: "993115559",
-  email: "yago@email.com",
-  rg: "12345678989",
-  pais: "Brasil",
-  estado: "Alagoas",
-  cidade: "Maceio",
-  logradouro: "Rua Brasil Alagoas",
-  n: "10",
-  bairro: "Centro",
-  complemento: "",
+const display = ref("");
+
+const hospede = reactive({});
+
+onMounted(async () => {
+  try {
+    const resposta = await hospedesServices.buscarHospede(editIdHospede.value);
+    const lastHospede = resposta.data;
+
+    hospede.nome = lastHospede.nome;
+    hospede.data_nascimento = lastHospede.data_nascimento;
+    hospede.telefone = lastHospede.telefone;
+    hospede.email = lastHospede.email;
+    hospede.rg = lastHospede.rg;
+    hospede.pais = lastHospede.pais;
+    hospede.estado = lastHospede.estado;
+    hospede.cidade = lastHospede.cidade;
+    hospede.logradouro = lastHospede.logradouro;
+    hospede.numero_endereco = lastHospede.numero_endereco;
+    hospede.bairro = lastHospede.bairro;
+    hospede.complemento_endereco = lastHospede.complemento_endereco;
+  } catch (error) {
+    console.log(error.response.data.mensagem);
+  }
+});
+
+const editar = async () => {
+  try {
+    const resposta = await hospedesServices.editarHospede(
+      editIdHospede.value,
+      hospede
+    );
+
+    alert(resposta.data.mensagem);
+  } catch (error) {
+    display.value = error.response.data.mensagem;
+  }
 };
 </script>
 
 <template>
   <div class="bodyCadastrarHospede">
     <h1 class="titulo">EDITAR HOSPEDE</h1>
-    <form class="containerForm" action="submit">
+    <h3 class="containerDisplay" v-if="display">{{ display }}</h3>
+    <form class="containerForm" @submit.prevent="editar()">
       <h2>DADOS PESSOAIS</h2>
       <p class="titleInput">Nome</p>
-      <input class="inputText" type="text" :placeholder="data1.nome" />
+      <input class="inputText" type="text" v-model="hospede.nome" />
 
       <p class="titleInput">Data de Nascimento</p>
-      <input
-        class="inputText"
-        type="text"
-        :placeholder="data1.dataNascimento"
-      />
+      <input class="inputText" type="text" v-model="hospede.data_nascimento" />
 
       <p class="titleInput">Telefone</p>
-      <input class="inputText" type="text" :placeholder="data1.telefone" />
+      <input class="inputText" type="text" v-model="hospede.telefone" />
 
       <p class="titleInput">E-mail</p>
-      <input class="inputText" type="text" :placeholder="data1.email" />
+      <input class="inputText" type="text" v-model="hospede.email" />
 
       <p class="titleInput">RG</p>
-      <input class="inputText" type="text" :placeholder="data1.rg" />
+      <input class="inputText" type="text" v-model="hospede.rg" />
 
       <h2>ENDEREÇO</h2>
       <p class="titleInput">País</p>
-      <input class="inputText" type="text" :placeholder="data1.pais" />
+      <input class="inputText" type="text" v-model="hospede.pais" />
 
       <p class="titleInput">Estado</p>
-      <input class="inputText" type="text" :placeholder="data1.estado" />
+      <input class="inputText" type="text" v-model="hospede.estado" />
 
       <p class="titleInput">Cidade</p>
-      <input class="inputText" type="text" :placeholder="data1.cidade" />
+      <input class="inputText" type="text" v-model="hospede.cidade" />
 
       <p class="titleInput">Logradouro</p>
-      <input class="inputText" type="text" :placeholder="data1.logradouro" />
+      <input class="inputText" type="text" v-model="hospede.logradouro" />
 
       <p class="titleInput">Número</p>
-      <input class="inputText" type="text" :placeholder="data1.n" />
+      <input class="inputText" type="text" v-model="hospede.numero_endereco" />
 
       <p class="titleInput">Bairro</p>
-      <input class="inputText" type="text" :placeholder="data1.bairro" />
+      <input class="inputText" type="text" v-model="hospede.bairro" />
 
       <p class="titleInput">Complemeto</p>
-      <input class="inputText" type="text" :placeholder="data1.complemento" />
+      <input
+        class="inputText"
+        type="text"
+        v-model="hospede.complemento_endereco"
+      />
 
-      <button class="btnSubmit" type="submit">SALVAR</button>
+      <button class="btnSubmit">SALVAR</button>
     </form>
   </div>
 </template>
@@ -83,6 +109,14 @@ const data1 = {
   font-family: Arial, Helvetica, sans-serif;
   align-self: center;
   margin-top: 20px;
+}
+.containerDisplay {
+  align-self: center;
+  margin: 0;
+  color: #e63946;
+  background: #003049;
+  padding: 5px 10px;
+  border-radius: 10px 10px 0 0;
 }
 .containerForm {
   display: flex;

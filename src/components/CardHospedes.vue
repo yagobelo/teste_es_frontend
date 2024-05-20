@@ -20,7 +20,7 @@ const changeEditHospedeId = () => {
         <p style="align-self: flex-end">ID: {{ hospede.id }}</p>
         <div class="containerP">
           <p>Nome: {{ hospede.nome }}</p>
-          <p>Nascimento: {{ hospede.dataNascimento }}</p>
+          <p>Nascimento: {{ hospede.data_nascimento }}</p>
           <p>Telefone: {{ hospede.telefone }}</p>
           <p>RG: {{ hospede.rg }}</p>
         </div>
@@ -29,9 +29,9 @@ const changeEditHospedeId = () => {
           <p>Estado: {{ hospede.estado }}</p>
           <p>Cidade: {{ hospede.cidade }}</p>
           <p>Logradouro: {{ hospede.logradouro }}</p>
-          <p>Número: {{ hospede.n }}</p>
+          <p>Número: {{ hospede.numero_endereco }}</p>
           <p>Bairro: {{ hospede.bairro }}</p>
-          <p>Complemento: {{ hospede.complemento }}</p>
+          <p>Complemento: {{ hospede.complemento_endereco }}</p>
           <p>Data do Cadastro: {{ hospede.create_at }}</p>
         </div>
       </div>
