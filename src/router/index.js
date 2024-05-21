@@ -11,12 +11,12 @@ const router = createRouter({
     {
       path: "/cadastro-hospede",
       name: "/cadastro-hospede",
-      component: () => import("@/views/CadastroHospede.vue"),
+      component: () => import("@/views/CadastroHospedeView.vue"),
     },
     {
       path: "/editar-hospede",
       name: "/editar-hospede",
-      component: () => import("@/views/EditarHospede.vue"),
+      component: () => import("@/views/EditarHospedeView.vue"),
     },
     {
       path: "/reservas",
@@ -26,12 +26,12 @@ const router = createRouter({
     {
       path: "/cadastro-reserva",
       name: "/cadastro-reserva",
-      component: () => import("@/views/CadastroReserva.vue"),
+      component: () => import("@/views/CadastroReservaView.vue"),
     },
     {
       path: "/editar-reserva",
       name: "/editar-reserva",
-      component: () => import("@/views/EditarReserva.vue"),
+      component: () => import("@/views/EditarReservaView.vue"),
     },
   ],
 });
