@@ -57,7 +57,6 @@ onMounted(async () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   text-decoration: none;
   color: black;

@@ -73,7 +73,6 @@ p {
   margin: 0;
   padding: 0;
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: normal;
   white-space: nowrap;
 }

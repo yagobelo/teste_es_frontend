@@ -106,7 +106,6 @@ const editar = async () => {
   flex-direction: column;
 }
 .titulo {
-  font-family: Arial, Helvetica, sans-serif;
   align-self: center;
   margin-top: 20px;
 }
@@ -152,7 +151,6 @@ const editar = async () => {
 .btnSubmit {
   padding: 5px 10px;
   border-radius: 25px;
-  font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   font-size: 15px;
   background: #06d6a0;
