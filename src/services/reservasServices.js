@@ -6,8 +6,8 @@ export const reservasServices = {
   async cadastrarReserva(reserva) {
     const response = await axios.post(`${BASE_URL}/cadastro`, {
       rg_hospede: reserva.rg_hospede,
-      data_checkin: reserva.data_checkin || "",
-      data_checkout: reserva.data_checkout || "",
+      data_checkin: reserva.data_checkin,
+      data_checkout: reserva.data_checkout,
       status_reserva: reserva.status_reserva,
     });
     return response;

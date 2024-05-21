@@ -44,10 +44,10 @@ const editar = async () => {
     <h1 class="titulo">EDITAR RESERVA</h1>
     <form class="containerForm" @submit.prevent="editar()">
       <p class="titleInput">Checkin</p>
-      <input class="inputText" type="text" v-model="reserva.data_checkin" />
+      <input class="inputText" type="date" v-model="reserva.data_checkin" />
 
       <p class="titleInput">Checkout</p>
-      <input class="inputText" type="text" v-model="reserva.data_checkout" />
+      <input class="inputText" type="date" v-model="reserva.data_checkout" />
 
       <p class="titleInput">Status</p>
       <input class="inputText" type="text" v-model="reserva.status_reserva" />

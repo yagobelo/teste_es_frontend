@@ -30,12 +30,14 @@ const cadastrar = async () => {
         placeholder="Nome"
         v-model="hospede.nome"
       />
-      <input
-        class="inputText"
-        type="text"
-        placeholder="Data de Nascimento"
-        v-model="hospede.data_nascimento"
-      />
+      <div class="divCalendario">
+        <p>Data de Nascimento:</p>
+        <input
+          class="inputText"
+          type="date"
+          v-model="hospede.data_nascimento"
+        />
+      </div>
       <input
         class="inputText"
         type="text"
@@ -44,13 +46,13 @@ const cadastrar = async () => {
       />
       <input
         class="inputText"
-        type="text"
+        type="tel"
         placeholder="Telefone"
         v-model="hospede.telefone"
       />
       <input
         class="inputText"
-        type="text"
+        type="email"
         placeholder="E-mail"
         v-model="hospede.email"
       />

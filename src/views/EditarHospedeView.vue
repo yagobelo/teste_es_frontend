@@ -58,13 +58,18 @@ const editar = async () => {
       <input class="inputText" type="text" v-model="hospede.nome" />
 
       <p class="titleInput">Data de Nascimento</p>
-      <input class="inputText" type="text" v-model="hospede.data_nascimento" />
+      <input
+        class="inputText"
+        style="width: 25px"
+        type="date"
+        v-model="hospede.data_nascimento"
+      />
 
       <p class="titleInput">Telefone</p>
-      <input class="inputText" type="text" v-model="hospede.telefone" />
+      <input class="inputText" type="tel" v-model="hospede.telefone" />
 
       <p class="titleInput">E-mail</p>
-      <input class="inputText" type="text" v-model="hospede.email" />
+      <input class="inputText" type="email" v-model="hospede.email" />
 
       <p class="titleInput">RG</p>
       <input class="inputText" type="text" v-model="hospede.rg" />

@@ -1,3 +1,11 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.divCalendario {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 50%;
+  overflow: auto;
+}

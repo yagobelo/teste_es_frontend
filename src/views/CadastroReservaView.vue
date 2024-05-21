@@ -23,10 +23,37 @@ const cadastrar = async () => {
     <h1 class="titulo">CADASTRAR RESERVA</h1>
     <h3 class="containerDisplay" v-if="display">{{ display }}</h3>
     <form class="containerForm" @submit.prevent="cadastrar()">
-      <input class="inputText" type="text" placeholder="RG Hospede" />
-      <input class="inputText" type="text" placeholder="Checkin" />
-      <input class="inputText" type="text" placeholder="Checkout" />
-      <input class="inputText" type="text" placeholder="Status" />
+      <input
+        class="inputText"
+        type="text"
+        placeholder="RG Hospede"
+        v-model="reserva.rg_hospede"
+      />
+
+      <div class="divCalendario">
+        <p>Data Checkin:</p>
+        <input
+          class="inputText"
+          type="date"
+          placeholder="Checkin"
+          v-model="reserva.data_checkin"
+        />
+      </div>
+      <div class="divCalendario">
+        <p>Data Checkout:</p>
+        <input
+          class="inputText"
+          type="date"
+          placeholder="Checkout"
+          v-model="reserva.data_checkout"
+        />
+      </div>
+      <input
+        class="inputText"
+        type="text"
+        placeholder="Status"
+        v-model="reserva.status_reserva"
+      />
 
       <button class="btnSubmit">SALVAR</button>
     </form>
