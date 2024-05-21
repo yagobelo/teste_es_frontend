@@ -1,36 +1,58 @@
 <script setup>
+import { reservasServices } from "@/services/reservasServices";
 import { useCounterStore } from "@/stores/counter";
 import { storeToRefs } from "pinia";
-import { onMounted } from "vue";
+import { onMounted, reactive, ref } from "vue";
 
 const store = useCounterStore();
 
 const { editIdReserva } = storeToRefs(store);
 
-onMounted(async () => {});
+const display = ref("");
+
+const reserva = reactive({});
+
+onMounted(async () => {
+  try {
+    const resposta = await reservasServices.buscarReserva(editIdReserva.value);
+    const lastReserva = resposta.data;
+
+    reserva.data_checkin = lastReserva.data_checkin;
+    reserva.data_checkout = lastReserva.data_checkout;
+    reserva.status_reserva = lastReserva.status_reserva;
+  } catch (error) {
+    console.log(error.response.data.mensagem);
+  }
+});
+
+const editar = async () => {
+  try {
+    const resposta = await reservasServices.editarReserva(
+      editIdReserva.value,
+      reserva
+    );
+
+    alert(resposta.data.mensagem);
+  } catch (error) {
+    display.value = error.response.data.mensagem;
+  }
+};
 </script>
 
 <template>
   <div class="bodyCadastrarReserva">
     <h1 class="titulo">EDITAR RESERVA</h1>
-    <form class="containerForm" action="submit">
-      <p class="titleInput">RG DO HOSPEDE</p>
-      <input class="inputText" type="text" :placeholder="data1.rg_hospede" />
-
+    <form class="containerForm" @submit.prevent="editar()">
       <p class="titleInput">Checkin</p>
-      <input class="inputText" type="text" :placeholder="data1.data_checkin" />
+      <input class="inputText" type="text" v-model="reserva.data_checkin" />
 
       <p class="titleInput">Checkout</p>
-      <input class="inputText" type="text" :placeholder="data1.data_checkout" />
+      <input class="inputText" type="text" v-model="reserva.data_checkout" />
 
       <p class="titleInput">Status</p>
-      <input
-        class="inputText"
-        type="text"
-        :placeholder="data1.status_reserva"
-      />
+      <input class="inputText" type="text" v-model="reserva.status_reserva" />
 
-      <button class="btnSubmit" type="submit">SALVAR</button>
+      <button class="btnSubmit">SALVAR</button>
     </form>
   </div>
 </template>
@@ -74,7 +96,7 @@ onMounted(async () => {});
   text-align: center;
   border-radius: 10px;
   border: 2px solid #06d6a0;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
 }
 .btnSubmit {
   padding: 5px 10px;

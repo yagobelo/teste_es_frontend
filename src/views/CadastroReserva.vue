@@ -1,15 +1,34 @@
-<script setup></script>
+<script setup>
+import { reservasServices } from "@/services/reservasServices";
+import { reactive, ref } from "vue";
+
+const display = ref("");
+
+const reserva = reactive({});
+
+const cadastrar = async () => {
+  try {
+    const resposta = await reservasServices.cadastrarReserva(reserva);
+
+    alert(resposta.data.mensagem);
+  } catch (error) {
+    display.value = error.response.data.mensagem;
+    console.log(error.response.data.mensagem);
+  }
+};
+</script>
 
 <template>
   <div class="bodyCadastrarReserva">
     <h1 class="titulo">CADASTRAR RESERVA</h1>
-    <form class="containerForm" action="submit">
+    <h3 class="containerDisplay" v-if="display">{{ display }}</h3>
+    <form class="containerForm" @submit.prevent="cadastrar()">
       <input class="inputText" type="text" placeholder="RG Hospede" />
       <input class="inputText" type="text" placeholder="Checkin" />
       <input class="inputText" type="text" placeholder="Checkout" />
       <input class="inputText" type="text" placeholder="Status" />
 
-      <button class="btnSubmit" type="submit">SALVAR</button>
+      <button class="btnSubmit">SALVAR</button>
     </form>
   </div>
 </template>
@@ -23,6 +42,14 @@
   font-family: Arial, Helvetica, sans-serif;
   align-self: center;
   margin-top: 20px;
+}
+.containerDisplay {
+  align-self: center;
+  margin: 0;
+  color: #e63946;
+  background: #003049;
+  padding: 5px 10px;
+  border-radius: 10px 10px 0 0;
 }
 .containerForm {
   display: flex;

@@ -1,6 +1,21 @@
 <script setup>
-import CardReserva from "@/components/CardReservas.vue";
-import { reservas } from "@/dataReservas.js";
+import CardReservas from "@/components/CardReservas.vue";
+import { ref } from "vue";
+
+import { reservasServices } from "@/services/reservasServices";
+import { onMounted } from "vue";
+
+const reservas = ref([]);
+
+onMounted(async () => {
+  try {
+    const resposta = await reservasServices.listarReservas();
+
+    reservas.value = resposta.data;
+  } catch (error) {
+    console.log(error.response.data.mensagem);
+  }
+});
 </script>
 
 <template>
@@ -9,7 +24,7 @@ import { reservas } from "@/dataReservas.js";
       >CADASTRAR RESERVA</RouterLink
     >
     <div class="cards">
-      <CardReserva
+      <CardReservas
         v-for="(item, index) in reservas"
         :key="index"
         :reserva="item"
