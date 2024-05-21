@@ -17,6 +17,13 @@ onMounted(async () => {
     const resposta = await reservasServices.buscarReserva(editIdReserva.value);
     const lastReserva = resposta.data;
 
+    lastReserva.data_checkin = new Date(
+      lastReserva.data_checkin
+    ).toLocaleDateString("en-CA");
+    lastReserva.data_checkout = new Date(
+      lastReserva.data_checkout
+    ).toLocaleDateString("en-CA");
+
     reserva.data_checkin = lastReserva.data_checkin;
     reserva.data_checkout = lastReserva.data_checkout;
     reserva.status_reserva = lastReserva.status_reserva;
@@ -48,6 +55,8 @@ const editar = async () => {
 
       <p class="titleInput">Checkout</p>
       <input class="inputText" type="date" v-model="reserva.data_checkout" />
+
+      {{ reserva.data_checkin }}
 
       <p class="titleInput">Status</p>
       <input class="inputText" type="text" v-model="reserva.status_reserva" />

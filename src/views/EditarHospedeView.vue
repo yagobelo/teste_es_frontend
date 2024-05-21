@@ -17,6 +17,10 @@ onMounted(async () => {
     const resposta = await hospedesServices.buscarHospede(editIdHospede.value);
     const lastHospede = resposta.data;
 
+    lastHospede.data_nascimento = new Date(
+      lastHospede.data_nascimento
+    ).toLocaleDateString("en-CA");
+
     hospede.nome = lastHospede.nome;
     hospede.data_nascimento = lastHospede.data_nascimento;
     hospede.telefone = lastHospede.telefone;
