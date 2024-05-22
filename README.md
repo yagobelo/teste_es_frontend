@@ -1,29 +1,69 @@
-# teste_es_frontend
+# Teste EconomySoftware FrontEnd
 
-This template should help get you started developing with Vue 3 in Vite.
+  <p align="left">
+  Teste de frontend do processo seletivo para EconomySoftware
+  </p>
 
-## Recommended IDE Setup
+## :man_mechanic: Linguagens e Ferramentas
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+![Skills](https://skillicons.dev/icons?i=js,vue)
 
-## Customize configuration
+## :computer: Rodando o Projeto
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+```shell
+# 1. Clone o projeto
 
-## Project Setup
+git clone git@github.com:yagobelo/teste_es_frontend.git
 
-```sh
+# 2. Instale as dependências
+
 npm install
-```
 
-### Compile and Hot-Reload for Development
+# 3. Execute o frontend
 
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
 npm run build
+
 ```
+
+## :sassy_man: Endpoints
+
+- / - Home.
+
+- /hospedes - Tela de visualizar todos os hospedes.
+- /reservas - Tela de visualizar todas as reservas.
+
+- /hospedes/cadastro-hospede - Tela de criar novo cadastro de hospede.
+- /reservas/cadastro-reserva - Tela de criar novo cadastro de reserva.
+
+- /hospedes/editar-hospede - Tela de editar dados de um hospede.
+- /reservas/editar-reserva - Tela de editar dados de uma reserva.
+
+## Imagens
+
+- /home:<br>
+  <img src="https://github.com/yagobelo/API-upload-img/blob/master/imagensProject/Captura%20de%20tela%202023-10-09%20131455.png" width="500px" /> <br>
+
+- /hospedes <br>
+  <img src="https://github.com/yagobelo/API-upload-img/blob/master/imagensProject/getAll.png" width="500px" /> <br>
+- /hospedes/cadastro-hospede <br>
+  <img src="https://github.com/yagobelo/API-upload-img/blob/master/imagensProject/getID.png" width="500px" /> <br>
+
+  - /hospedes/editar-hospede <br>
+    <img src="https://github.com/yagobelo/API-upload-img/blob/master/imagensProject/getID.png" width="500px" /> <br>
+
+  - /reservas <br>
+    <img src="https://github.com/yagobelo/API-upload-img/blob/master/imagensProject/getAll.png" width="500px" /> <br>
+
+- /reservas/cadastro-reserva <br>
+  <img src="https://github.com/yagobelo/API-upload-img/blob/master/imagensProject/getID.png" width="500px" /> <br>
+  - /reservas/editar-reserva <br>
+    <img src="https://github.com/yagobelo/API-upload-img/blob/master/imagensProject/getID.png" width="500px" /> <br>
+
+## :technologist: Contribuidores
+
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/yagobelo"><img src="https://avatars.githubusercontent.com/u/125224496?v=4" width="50px;" alt=""/><br /><sub><b>Yago Belo</b></sub></a><br /></td>
+   
+  </tr>
+</table>
