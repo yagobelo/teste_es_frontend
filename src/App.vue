@@ -6,9 +6,11 @@ import { RouterLink, RouterView } from "vue-router";
   <header>
     <h1 class="titleHeader">HOTEL XY</h1>
     <nav>
-      <RouterLink class="textHeader" to="/hospedes">HOSPEDES</RouterLink>
-      <img src="../public/logo.png" alt="LogoHotel" />
-      <RouterLink class="textHeader" to="/reservas">RESERVAS</RouterLink>
+      <RouterLink class="textHeader" to="/hospedes">| HOSPEDES |</RouterLink>
+      <RouterLink to="/">
+        <img src="../public/logo.png" alt="LogoHotel" />
+      </RouterLink>
+      <RouterLink class="textHeader" to="/reservas">| RESERVAS |</RouterLink>
     </nav>
   </header>
   <RouterView />
@@ -26,6 +28,7 @@ header {
   text-align: center;
   margin: 0;
   padding: 5px 0 0 0;
+  color: black;
 }
 nav {
   display: flex;
@@ -33,7 +36,6 @@ nav {
   align-items: center;
 }
 .textHeader {
-  background: #009cbb;
   color: black;
   text-decoration: none;
   font-family: Arial, Helvetica, sans-serif;
@@ -41,7 +43,6 @@ nav {
   font-weight: bold;
   margin: 10px;
   padding: 0 10px;
-  border-radius: 10px;
 }
 .textHeader:hover {
   color: white;
