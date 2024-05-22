@@ -15,10 +15,10 @@ const changeEditReservaId = () => {
 
 <template>
   <RouterLink style="text-decoration: none" to="/editar-reserva">
-    <button @click="changeEditReservaId()" class="container">
-      <div class="containerData">
+    <button @click="changeEditReservaId()" class="containerReserva">
+      <div class="containerDataReserva">
         <p style="align-self: flex-end">ID: {{ reserva.id }}</p>
-        <div class="containerP">
+        <div class="containerPReserva">
           <p>RG: {{ reserva.rg_hospede }}</p>
           <p>Checkin: {{ reserva.data_checkin }}</p>
           <p>Checkout: {{ reserva.data_checkout }}</p>
@@ -31,7 +31,7 @@ const changeEditReservaId = () => {
 </template>
 
 <style>
-.container {
+.containerReserva {
   background: #003049;
   border-radius: 10px;
   border: none;
@@ -41,8 +41,9 @@ const changeEditReservaId = () => {
   height: 150px;
   margin: 10px;
   padding: 0 10px;
+  cursor: pointer;
 }
-.containerData {
+.containerDataReserva {
   display: flex;
   flex-direction: column;
   align-items: baseline;
@@ -51,7 +52,7 @@ const changeEditReservaId = () => {
   max-width: 700px;
   height: 100%;
 }
-.containerP {
+.containerPReserva {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -67,10 +68,7 @@ p {
   font-weight: normal;
   white-space: nowrap;
 }
-button {
-  cursor: pointer;
-}
-button:hover {
+containerReserva:hover {
   background-color: #002f49c0;
 }
 </style>

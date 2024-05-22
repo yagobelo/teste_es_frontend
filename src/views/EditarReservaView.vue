@@ -47,7 +47,7 @@ const editar = async () => {
 </script>
 
 <template>
-  <div class="bodyCadastrarReserva">
+  <div class="bodyCadastrar">
     <h1 class="titulo">EDITAR RESERVA</h1>
     <form class="containerForm" @submit.prevent="editar()">
       <p class="titleInput">Checkin</p>
@@ -67,56 +67,15 @@ const editar = async () => {
 </template>
 
 <style>
-.bodyCadastrarReserva {
-  display: flex;
-  flex-direction: column;
-}
-.titulo {
-  align-self: center;
-  margin-top: 20px;
-}
 .containerForm {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: column;
   height: 270px;
-  margin: 0 20px 0 20px;
-  background: #003049;
-  border-radius: 10px;
   padding: 20px 10px 0 10px;
-  color: white;
 }
-.titleInput {
-  background: #00b4d8;
-  color: #003049;
-  width: 170px;
-  text-align: center;
-  height: 20px;
-  border-radius: 20px 20px 0 0;
-  font-size: 15px;
-}
+
 .inputText {
-  min-width: 200px;
-  width: 50%;
-  max-width: 500px;
-  height: 20px;
-  text-align: center;
-  border-radius: 10px;
-  border: 2px solid #06d6a0;
   margin-bottom: 20px;
 }
 .btnSubmit {
-  padding: 5px 10px;
-  border-radius: 25px;
-  font-weight: bold;
-  font-size: 15px;
-  background: #06d6a0;
-  width: 200px;
-  height: 40px;
   margin: 20px 0;
-}
-.btnSubmit:hover {
-  background-color: #06d69ebd;
 }
 </style>

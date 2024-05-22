@@ -15,16 +15,16 @@ const changeEditHospedeId = () => {
 
 <template>
   <RouterLink style="text-decoration: none" to="/editar-hospede">
-    <button @click="changeEditHospedeId()" class="container">
-      <div class="containerData">
+    <button @click="changeEditHospedeId()" class="containerHospede">
+      <div class="containerDataHospede">
         <p style="align-self: flex-end">ID: {{ hospede.id }}</p>
-        <div class="containerP">
+        <div class="containerPHospede">
           <p>Nome: {{ hospede.nome }}</p>
           <p>Nascimento: {{ hospede.data_nascimento }}</p>
           <p>Telefone: {{ hospede.telefone }}</p>
           <p>RG: {{ hospede.rg }}</p>
         </div>
-        <div class="containerP">
+        <div class="containerPHospede">
           <p>País: {{ hospede.pais }}</p>
           <p>Estado: {{ hospede.estado }}</p>
           <p>Cidade: {{ hospede.cidade }}</p>
@@ -40,7 +40,7 @@ const changeEditHospedeId = () => {
 </template>
 
 <style>
-.container {
+.containerHospede {
   background: #003049;
   border-radius: 10px;
   border: none;
@@ -50,8 +50,9 @@ const changeEditHospedeId = () => {
   height: 250px;
   margin: 10px;
   padding: 0 10px;
+  cursor: pointer;
 }
-.containerData {
+.containerDataHospede {
   display: flex;
   flex-direction: column;
   align-items: baseline;
@@ -60,7 +61,7 @@ const changeEditHospedeId = () => {
   max-width: 700px;
   height: 100%;
 }
-.containerP {
+.containerPHospede {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -76,10 +77,7 @@ p {
   font-weight: normal;
   white-space: nowrap;
 }
-button {
-  cursor: pointer;
-}
-button:hover {
+.containerHospede:hover {
   background-color: #002f49c0;
 }
 </style>
