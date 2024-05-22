@@ -25,7 +25,6 @@ const changeEditHospedeId = () => {
           <p>RG: {{ hospede.rg }}</p>
         </div>
         <div class="containerPHospede">
-          <p>País: {{ hospede.pais }}</p>
           <p>Estado: {{ hospede.estado }}</p>
           <p>Cidade: {{ hospede.cidade }}</p>
           <p>Logradouro: {{ hospede.logradouro }}</p>

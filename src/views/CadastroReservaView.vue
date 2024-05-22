@@ -41,7 +41,7 @@ const cadastrar = async () => {
         v-model="reserva.rg_hospede"
       />
 
-      <div class="divCalendario">
+      <div class="separarInput">
         <p>Data Checkin:</p>
         <input
           class="inputText"
@@ -50,7 +50,7 @@ const cadastrar = async () => {
           v-model="reserva.data_checkin"
         />
       </div>
-      <div class="divCalendario">
+      <div class="separarInput">
         <p>Data Checkout:</p>
         <input
           class="inputText"

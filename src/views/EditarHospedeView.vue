@@ -1,6 +1,7 @@
 <script setup>
 import { useRouter } from "vue-router";
 import { hospedesServices } from "@/services/hospedesServices";
+import { estadosServices } from "@/services/estadosServices";
 import { useCounterStore } from "@/stores/counter";
 import { storeToRefs } from "pinia";
 import { onMounted, reactive, ref } from "vue";
@@ -14,10 +15,14 @@ const { editIdHospede } = storeToRefs(store);
 const display = ref("");
 
 const hospede = reactive({});
+const estadosEditar = reactive([]);
 
 onMounted(async () => {
   try {
     const resposta = await hospedesServices.buscarHospede(editIdHospede.value);
+    const respostaEstados = await estadosServices.listarEstados();
+
+    estadosEditar.push(respostaEstados);
     const lastHospede = resposta.data;
 
     hospede.nome = lastHospede.nome;
@@ -25,7 +30,6 @@ onMounted(async () => {
     hospede.telefone = lastHospede.telefone;
     hospede.email = lastHospede.email;
     hospede.rg = lastHospede.rg;
-    hospede.pais = lastHospede.pais;
     hospede.estado = lastHospede.estado;
     hospede.cidade = lastHospede.cidade;
     hospede.logradouro = lastHospede.logradouro;
@@ -79,11 +83,17 @@ const editar = async () => {
       <input class="inputText" type="text" v-model="hospede.rg" />
 
       <h2>ENDEREÇO</h2>
-      <p class="titleInput">País</p>
-      <input class="inputText" type="text" v-model="hospede.pais" />
 
       <p class="titleInput">Estado</p>
-      <input class="inputText" type="text" v-model="hospede.estado" />
+      <select class="inputText" v-model="hospede.estado">
+        <option
+          v-for="(estado, index) in estadosEditar[0]"
+          :key="index.id"
+          :value="estado.nome"
+        >
+          {{ estado.nome }}
+        </option>
+      </select>
 
       <p class="titleInput">Cidade</p>
       <input class="inputText" type="text" v-model="hospede.cidade" />

@@ -1,13 +1,24 @@
 <script setup>
 import { useRouter } from "vue-router";
 import { hospedesServices } from "@/services/hospedesServices";
-import { reactive, ref } from "vue";
+import { estadosServices } from "@/services/estadosServices";
+import { onMounted, reactive, ref } from "vue";
 
 const router = useRouter();
 
 const display = ref("");
 
 const hospede = reactive({});
+const estados = reactive([]);
+
+onMounted(async () => {
+  try {
+    const resposta = await estadosServices.listarEstados();
+    estados.push(resposta);
+  } catch (error) {
+    console.log(error.response);
+  }
+});
 
 const cadastrar = async () => {
   try {
@@ -38,7 +49,7 @@ const cadastrar = async () => {
         placeholder="Nome"
         v-model="hospede.nome"
       />
-      <div class="divCalendario">
+      <div class="separarInput">
         <p>Data de Nascimento:</p>
         <input
           class="inputText"
@@ -66,18 +77,18 @@ const cadastrar = async () => {
       />
 
       <h2>ENDEREÇO</h2>
-      <input
-        class="inputText"
-        type="text"
-        placeholder="País"
-        v-model="hospede.pais"
-      />
-      <input
-        class="inputText"
-        type="text"
-        placeholder="Estado"
-        v-model="hospede.estado"
-      />
+      <div class="separarInput">
+        <p>Estado:</p>
+        <select class="inputText" v-model="hospede.estado">
+          <option
+            v-for="(estado, index) in estados[0]"
+            :key="index.id"
+            :value="estado.nome"
+          >
+            {{ estado.nome }}
+          </option>
+        </select>
+      </div>
       <input
         class="inputText"
         type="text"
