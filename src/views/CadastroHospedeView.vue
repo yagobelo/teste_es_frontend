@@ -1,6 +1,9 @@
 <script setup>
+import { useRouter } from "vue-router";
 import { hospedesServices } from "@/services/hospedesServices";
 import { reactive, ref } from "vue";
+
+const router = useRouter();
 
 const display = ref("");
 
@@ -8,9 +11,14 @@ const hospede = reactive({});
 
 const cadastrar = async () => {
   try {
+    if (hospede.data_nascimento == "Invalid Date") {
+      return (display.value = "Formato de data de nascimento invalida.");
+    }
+
     const resposta = await hospedesServices.cadastrarHospede(hospede);
 
     alert(resposta.data.mensagem);
+    router.push({ path: "/hospedes" });
   } catch (error) {
     display.value = error.response.data.mensagem;
     console.log(error.response.data.mensagem);

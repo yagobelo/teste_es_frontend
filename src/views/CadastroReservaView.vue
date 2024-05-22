@@ -1,6 +1,9 @@
 <script setup>
+import { useRouter } from "vue-router";
 import { reservasServices } from "@/services/reservasServices";
 import { reactive, ref } from "vue";
+
+const router = useRouter();
 
 const display = ref("");
 
@@ -8,9 +11,17 @@ const reserva = reactive({});
 
 const cadastrar = async () => {
   try {
+    if (reserva.data_checkin == "Invalid Date") {
+      return (display.value = "Formato de data do checkin invalida.");
+    }
+    if (reserva.data_checkout == "Invalid Date") {
+      return (display.value = "Formato de data do checkout invalida.");
+    }
+
     const resposta = await reservasServices.cadastrarReserva(reserva);
 
     alert(resposta.data.mensagem);
+    router.push({ path: "/reservas" });
   } catch (error) {
     display.value = error.response.data.mensagem;
     console.log(error.response.data.mensagem);

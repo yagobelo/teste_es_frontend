@@ -1,8 +1,11 @@
 <script setup>
+import { useRouter } from "vue-router";
 import { reservasServices } from "@/services/reservasServices";
 import { useCounterStore } from "@/stores/counter";
 import { storeToRefs } from "pinia";
 import { onMounted, reactive, ref } from "vue";
+
+const router = useRouter();
 
 const store = useCounterStore();
 
@@ -20,6 +23,7 @@ onMounted(async () => {
     lastReserva.data_checkin = new Date(
       lastReserva.data_checkin
     ).toLocaleDateString("en-CA");
+
     lastReserva.data_checkout = new Date(
       lastReserva.data_checkout
     ).toLocaleDateString("en-CA");
@@ -34,12 +38,20 @@ onMounted(async () => {
 
 const editar = async () => {
   try {
+    if (reserva.data_checkin == "Invalid Date") {
+      return (display.value = "Formato de data do checkin invalida.");
+    }
+    if (reserva.data_checkout == "Invalid Date") {
+      return (display.value = "Formato de data do checkout invalida.");
+    }
+
     const resposta = await reservasServices.editarReserva(
       editIdReserva.value,
       reserva
     );
 
     alert(resposta.data.mensagem);
+    router.push({ path: "/reservas" });
   } catch (error) {
     display.value = error.response.data.mensagem;
   }

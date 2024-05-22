@@ -1,8 +1,11 @@
 <script setup>
+import { useRouter } from "vue-router";
 import { hospedesServices } from "@/services/hospedesServices";
 import { useCounterStore } from "@/stores/counter";
 import { storeToRefs } from "pinia";
 import { onMounted, reactive, ref } from "vue";
+
+const router = useRouter();
 
 const store = useCounterStore();
 
@@ -40,12 +43,17 @@ onMounted(async () => {
 
 const editar = async () => {
   try {
+    if (hospede.data_nascimento == "Invalid Date") {
+      return (display.value = "Formato de data de nascimento invalida.");
+    }
+
     const resposta = await hospedesServices.editarHospede(
       editIdHospede.value,
       hospede
     );
 
     alert(resposta.data.mensagem);
+    router.push({ path: "/hospedes" });
   } catch (error) {
     display.value = error.response.data.mensagem;
   }
