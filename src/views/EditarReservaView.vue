@@ -61,6 +61,7 @@ const editar = async () => {
 <template>
   <div class="bodyCadastrar">
     <h1 class="titulo">EDITAR RESERVA</h1>
+    <h3 class="containerDisplay" v-if="display">{{ display }}</h3>
     <form class="containerForm" @submit.prevent="editar()">
       <p class="titleInput">Checkin</p>
       <input class="inputText" type="date" v-model="reserva.data_checkin" />
