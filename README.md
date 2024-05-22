@@ -41,23 +41,23 @@ npm run build
 ## Imagens
 
 - /home:<br>
-  <img src="https://github.com/yagobelo/API-upload-img/blob/master/imagensProject/Captura%20de%20tela%202023-10-09%20131455.png" width="500px" /> <br>
+  <img src="https://github.com/yagobelo/teste_es_frontend/blob/main/public/imagensProjeto/home.png" width="500px" /> <br>
 
-- /hospedes <br>
-  <img src="https://github.com/yagobelo/API-upload-img/blob/master/imagensProject/getAll.png" width="500px" /> <br>
-- /hospedes/cadastro-hospede <br>
-  <img src="https://github.com/yagobelo/API-upload-img/blob/master/imagensProject/getID.png" width="500px" /> <br>
+  - /hospedes <br>
+  <img src="https://github.com/yagobelo/teste_es_frontend/blob/main/public/imagensProjeto/hospedes.png" width="500px" /> <br>
+    - /hospedes/cadastro-hospede <br>
+  <img src="https://github.com/yagobelo/teste_es_frontend/blob/main/public/imagensProjeto/cadastro-hospede.png" width="500px" /> <br>
 
-  - /hospedes/editar-hospede <br>
-    <img src="https://github.com/yagobelo/API-upload-img/blob/master/imagensProject/getID.png" width="500px" /> <br>
+    - /hospedes/editar-hospede <br>
+    <img src="https://github.com/yagobelo/teste_es_frontend/blob/main/public/imagensProjeto/editar-hospede.png" width="500px" /> <br>
 
   - /reservas <br>
-    <img src="https://github.com/yagobelo/API-upload-img/blob/master/imagensProject/getAll.png" width="500px" /> <br>
+    <img src="https://github.com/yagobelo/teste_es_frontend/blob/main/public/imagensProjeto/reservas.png" width="500px" /> <br>
 
-- /reservas/cadastro-reserva <br>
-  <img src="https://github.com/yagobelo/API-upload-img/blob/master/imagensProject/getID.png" width="500px" /> <br>
-  - /reservas/editar-reserva <br>
-    <img src="https://github.com/yagobelo/API-upload-img/blob/master/imagensProject/getID.png" width="500px" /> <br>
+    - /reservas/cadastro-reserva <br>
+  <img src="https://github.com/yagobelo/teste_es_frontend/blob/main/public/imagensProjeto/cadastro-reserva.png" width="500px" /> <br>
+    - /reservas/editar-reserva <br>
+    <img src="https://github.com/yagobelo/teste_es_frontend/blob/main/public/imagensProjeto/editar-reserva.png" width="500px" /> <br>
 
 ## :technologist: Contribuidores
 
