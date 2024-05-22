@@ -85,7 +85,7 @@ const editar = async () => {
       <h2>ENDEREÇO</h2>
 
       <p class="titleInput">Estado</p>
-      <select class="inputText" v-model="hospede.estado">
+      <select class="inputText" style="width: 25px" v-model="hospede.estado">
         <option
           v-for="(estado, index) in estadosEditar[0]"
           :key="index.id"

@@ -59,12 +59,15 @@ const cadastrar = async () => {
           v-model="reserva.data_checkout"
         />
       </div>
-      <input
-        class="inputText"
-        type="text"
-        placeholder="Status"
-        v-model="reserva.status_reserva"
-      />
+
+      <div class="separarInput">
+        <p>Status:</p>
+        <select class="inputText" v-model="reserva.status_reserva">
+          <option value="PERMITIDO">PERMITIDO</option>
+          <option value="NEGADO">NEGADO</option>
+          <option value="REVOGADO">REVOGADO</option>
+        </select>
+      </div>
 
       <button class="btnSubmit">SALVAR</button>
     </form>

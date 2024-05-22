@@ -54,10 +54,12 @@ const editar = async () => {
       <p class="titleInput">Checkout</p>
       <input class="inputText" type="date" v-model="reserva.data_checkout" />
 
-      {{ reserva.data_checkin }}
-
-      <p class="titleInput">Status</p>
-      <input class="inputText" type="text" v-model="reserva.status_reserva" />
+      <p class="titleInput">Status:</p>
+      <select class="inputText" v-model="reserva.status_reserva">
+        <option value="PERMITIDO">PERMITIDO</option>
+        <option value="NEGADO">NEGADO</option>
+        <option value="REVOGADO">REVOGADO</option>
+      </select>
 
       <button class="btnSubmit">SALVAR</button>
     </form>
@@ -71,7 +73,8 @@ const editar = async () => {
 }
 
 .inputText {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  width: 25px;
 }
 .btnSubmit {
   margin: 20px 0;
