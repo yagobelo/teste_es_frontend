@@ -20,14 +20,6 @@ onMounted(async () => {
     const resposta = await reservasServices.buscarReserva(editIdReserva.value);
     const lastReserva = resposta.data;
 
-    lastReserva.data_checkin = new Date(
-      lastReserva.data_checkin
-    ).toLocaleDateString("en-CA");
-
-    lastReserva.data_checkout = new Date(
-      lastReserva.data_checkout
-    ).toLocaleDateString("en-CA");
-
     reserva.data_checkin = lastReserva.data_checkin;
     reserva.data_checkout = lastReserva.data_checkout;
     reserva.status_reserva = lastReserva.status_reserva;
@@ -38,13 +30,6 @@ onMounted(async () => {
 
 const editar = async () => {
   try {
-    if (reserva.data_checkin == "Invalid Date") {
-      return (display.value = "Formato de data do checkin invalida.");
-    }
-    if (reserva.data_checkout == "Invalid Date") {
-      return (display.value = "Formato de data do checkout invalida.");
-    }
-
     const resposta = await reservasServices.editarReserva(
       editIdReserva.value,
       reserva

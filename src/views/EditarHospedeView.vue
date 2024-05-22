@@ -20,10 +20,6 @@ onMounted(async () => {
     const resposta = await hospedesServices.buscarHospede(editIdHospede.value);
     const lastHospede = resposta.data;
 
-    lastHospede.data_nascimento = new Date(
-      lastHospede.data_nascimento
-    ).toLocaleDateString("en-CA");
-
     hospede.nome = lastHospede.nome;
     hospede.data_nascimento = lastHospede.data_nascimento;
     hospede.telefone = lastHospede.telefone;
@@ -43,10 +39,6 @@ onMounted(async () => {
 
 const editar = async () => {
   try {
-    if (hospede.data_nascimento == "Invalid Date") {
-      return (display.value = "Formato de data de nascimento invalida.");
-    }
-
     const resposta = await hospedesServices.editarHospede(
       editIdHospede.value,
       hospede
