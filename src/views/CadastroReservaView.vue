@@ -6,11 +6,17 @@ import { reactive, ref } from "vue";
 const router = useRouter();
 
 const display = ref("");
+const checkinDigitado = ref(true);
 
 const reserva = reactive({});
 
 const cadastrar = async () => {
   try {
+    if (reserva.data_checkout < reserva.data_checkin) {
+      return (display.value =
+        "Data do checkout não pode ser menor que a data do checkin.");
+    }
+
     if (reserva.data_checkin == "Invalid Date") {
       return (display.value = "Formato de data do checkin invalida.");
     }
@@ -48,6 +54,12 @@ const cadastrar = async () => {
           type="date"
           placeholder="Checkin"
           v-model="reserva.data_checkin"
+          @change="
+            () => {
+              checkinDigitado = false;
+              reserva.data_checkout = reserva.data_checkin;
+            }
+          "
         />
       </div>
       <div class="separarInput">
@@ -57,6 +69,7 @@ const cadastrar = async () => {
           type="date"
           placeholder="Checkout"
           v-model="reserva.data_checkout"
+          :disabled="checkinDigitado"
         />
       </div>
 
