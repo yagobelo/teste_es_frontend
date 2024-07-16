@@ -62,7 +62,12 @@ const editar = async () => {
       <input class="inputText" type="date" v-model="reserva.data_checkin" />
 
       <p class="titleInput">Checkout</p>
-      <input class="inputText" type="date" v-model="reserva.data_checkout" />
+      <input
+        class="inputText"
+        type="date"
+        v-model="reserva.data_checkout"
+        :min="reserva.data_checkin"
+      />
 
       <p class="titleInput">Status:</p>
       <select class="inputText" v-model="reserva.status_reserva">

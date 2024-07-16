@@ -70,6 +70,7 @@ const cadastrar = async () => {
           placeholder="Checkout"
           v-model="reserva.data_checkout"
           :disabled="checkinDigitado"
+          :min="reserva.data_checkin"
         />
       </div>
 
