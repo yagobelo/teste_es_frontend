@@ -5,6 +5,7 @@ import { estadosServices } from "@/services/estadosServices";
 import { useCounterStore } from "@/stores/counter";
 import { storeToRefs } from "pinia";
 import { onMounted, reactive, ref } from "vue";
+import { vMaska } from "maska/vue";
 
 const router = useRouter();
 
@@ -43,6 +44,16 @@ onMounted(async () => {
 
 const editar = async () => {
   try {
+    const regexTelefone = /^\(\d{2}\) \d{5}-\d{4}$/;
+    const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+    if (!regexTelefone.test(hospede.telefone)) {
+      return (display.value = "Telefone inválido.");
+    }
+
+    if (!regexEmail.test(hospede.email)) {
+      return (display.value = "Email inválido.");
+    }
     const resposta = await hospedesServices.editarHospede(
       editIdHospede.value,
       hospede
@@ -74,7 +85,12 @@ const editar = async () => {
       />
 
       <p class="titleInput">Telefone</p>
-      <input class="inputText" type="tel" v-model="hospede.telefone" />
+      <input
+        class="inputText"
+        type="tel"
+        v-model="hospede.telefone"
+        v-maska="'(##) #####-####'"
+      />
 
       <p class="titleInput">E-mail</p>
       <input class="inputText" type="email" v-model="hospede.email" />

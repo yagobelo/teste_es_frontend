@@ -8,7 +8,7 @@ import { RouterLink, RouterView } from "vue-router";
     <nav>
       <RouterLink class="textHeader" to="/hospedes">| HOSPEDES |</RouterLink>
       <RouterLink to="/">
-        <img src="../public/logo.png" alt="LogoHotel" />
+        <img src="/logo.png" alt="LogoHotel" />
       </RouterLink>
       <RouterLink class="textHeader" to="/reservas">| RESERVAS |</RouterLink>
     </nav>
