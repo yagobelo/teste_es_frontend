@@ -12,6 +12,7 @@ const store = useCounterStore();
 const { editIdReserva } = storeToRefs(store);
 
 const display = ref("");
+const checkinDigitado = ref(true);
 
 const reserva = reactive({});
 
@@ -20,6 +21,7 @@ onMounted(async () => {
     const resposta = await reservasServices.buscarReserva(editIdReserva.value);
     const lastReserva = resposta.data;
 
+    reserva.rg_hospede = lastReserva.rg_hospede;
     reserva.data_checkin = lastReserva.data_checkin;
     reserva.data_checkout = lastReserva.data_checkout;
     reserva.status_reserva = lastReserva.status_reserva;
@@ -30,6 +32,11 @@ onMounted(async () => {
 
 const editar = async () => {
   try {
+    if (reserva.data_checkout < reserva.data_checkin) {
+      return (display.value =
+        "Data do checkout não pode ser menor que a data do checkin.");
+    }
+
     const resposta = await reservasServices.editarReserva(
       editIdReserva.value,
       reserva
@@ -48,6 +55,9 @@ const editar = async () => {
     <h1 class="titulo">EDITAR RESERVA</h1>
     <h3 class="containerDisplay" v-if="display">{{ display }}</h3>
     <form class="containerForm" @submit.prevent="editar()">
+      <p class="titleInput">RG Hospede:</p>
+      <input class="inputText" type="text" v-model="reserva.rg_hospede" />
+
       <p class="titleInput">Checkin</p>
       <input class="inputText" type="date" v-model="reserva.data_checkin" />
 
@@ -68,7 +78,7 @@ const editar = async () => {
 
 <style>
 .containerForm {
-  height: 270px;
+  height: auto;
   padding: 20px 10px 0 10px;
 }
 

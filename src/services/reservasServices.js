@@ -24,6 +24,7 @@ export const reservasServices = {
   },
   async editarReserva(id, reserva) {
     const response = await axios.put(`${BASE_URL}/editar/${id}`, {
+      rg_hospede: reserva.rg_hospede,
       data_checkin: reserva.data_checkin,
       data_checkout: reserva.data_checkout,
       status_reserva: reserva.status_reserva,
