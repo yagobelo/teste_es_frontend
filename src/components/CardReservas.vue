@@ -19,11 +19,24 @@ const changeEditReservaId = () => {
       <div class="containerDataReserva">
         <p style="align-self: flex-end">ID: {{ reserva.id }}</p>
         <div class="containerPReserva">
+          <h3>Reserva</h3>
           <p>RG: {{ reserva.rg_hospede }}</p>
           <p>Checkin: {{ reserva.data_checkin }}</p>
           <p>Checkout: {{ reserva.data_checkout }}</p>
           <p>Status: {{ reserva.status_reserva }}</p>
           <p>Data da Reserva: {{ reserva.create_at }}</p>
+
+          <h3>Hospede</h3>
+          <p>Nome: {{ reserva.nome }}</p>
+          <p>Data de Nascimento: {{ reserva.data_nascimento }}</p>
+          <p>Telefone: {{ reserva.telefone }}</p>
+          <p>E-mail: {{ reserva.email }}</p>
+          <p>Estado: {{ reserva.estado }}</p>
+          <p>Cidade: {{ reserva.cidade }}</p>
+          <p>Logradouro: {{ reserva.logradouro }}</p>
+          <p>Número: {{ reserva.numero_endereco }}</p>
+          <p>Bairro: {{ reserva.bairro }}</p>
+          <p>Complemento: {{ reserva.complemento_endereco }}</p>
         </div>
       </div>
     </button>
@@ -38,9 +51,8 @@ const changeEditReservaId = () => {
   display: flex;
   align-items: center;
   width: 300px;
-  height: 150px;
   margin: 10px;
-  padding: 0 10px;
+  padding: 5px 10px;
   cursor: pointer;
 }
 .containerDataReserva {
@@ -68,7 +80,10 @@ p {
   font-weight: normal;
   white-space: nowrap;
 }
-containerReserva:hover {
+h3 {
+  color: white;
+}
+.containerReserva:hover {
   background-color: #002f49c0;
 }
 </style>
