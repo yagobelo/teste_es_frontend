@@ -5,6 +5,7 @@ import { estadosServices } from "@/services/estadosServices";
 import { useCounterStore } from "@/stores/counter";
 import { storeToRefs } from "pinia";
 import { onMounted, reactive, ref } from "vue";
+import { vMaska } from "maska/vue";
 
 const router = useRouter();
 
@@ -74,7 +75,12 @@ const editar = async () => {
       />
 
       <p class="titleInput">Telefone</p>
-      <input class="inputText" type="tel" v-model="hospede.telefone" />
+      <input
+        class="inputText"
+        type="tel"
+        v-model="hospede.telefone"
+        v-maska="'(##) #####-####'"
+      />
 
       <p class="titleInput">E-mail</p>
       <input class="inputText" type="email" v-model="hospede.email" />

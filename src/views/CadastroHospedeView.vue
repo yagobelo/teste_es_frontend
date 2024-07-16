@@ -3,10 +3,12 @@ import { useRouter } from "vue-router";
 import { hospedesServices } from "@/services/hospedesServices";
 import { estadosServices } from "@/services/estadosServices";
 import { onMounted, reactive, ref } from "vue";
+import { vMaska } from "maska/vue";
 
 const router = useRouter();
 
 const display = ref("");
+const teste = ref("teste");
 
 const hospede = reactive({});
 const estados = reactive([]);
@@ -22,6 +24,17 @@ onMounted(async () => {
 
 const cadastrar = async () => {
   try {
+    const regexTelefone = /^\(\d{2}\) \d{5}-\d{4}$/;
+    const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+    if (!regexTelefone.test(hospede.telefone)) {
+      return (display.value = "Telefone inválido.");
+    }
+
+    if (!regexEmail.test(hospede.email)) {
+      return (display.value = "Email inválido.");
+    }
+
     if (hospede.data_nascimento == "Invalid Date") {
       return (display.value = "Formato de data de nascimento invalida.");
     }
@@ -68,6 +81,7 @@ const cadastrar = async () => {
         type="tel"
         placeholder="Telefone"
         v-model="hospede.telefone"
+        v-maska="'(##) #####-####'"
       />
       <input
         class="inputText"
