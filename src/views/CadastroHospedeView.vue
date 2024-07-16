@@ -8,7 +8,6 @@ import { vMaska } from "maska/vue";
 const router = useRouter();
 
 const display = ref("");
-const teste = ref("teste");
 
 const hospede = reactive({});
 const estados = reactive([]);

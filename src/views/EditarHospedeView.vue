@@ -44,6 +44,16 @@ onMounted(async () => {
 
 const editar = async () => {
   try {
+    const regexTelefone = /^\(\d{2}\) \d{5}-\d{4}$/;
+    const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+    if (!regexTelefone.test(hospede.telefone)) {
+      return (display.value = "Telefone inválido.");
+    }
+
+    if (!regexEmail.test(hospede.email)) {
+      return (display.value = "Email inválido.");
+    }
     const resposta = await hospedesServices.editarHospede(
       editIdHospede.value,
       hospede
